@@ -22,11 +22,20 @@ const findFrequency = function(array) {
     }
     counter = 0;
   }
-const leastFrequentItem = array.sort((a,b) =>
-          array.filter(v => v===b).length
-        - array.filter(v => v===a).length
-    ).pop();
-
+let leastCounter = 0;
+  let leastAmount = 2;
+  let leastFrequentItem;
+  for (k = 0; k < array.length; k++) {
+    for (l = 0; l < array.length; l++) {
+      if (array[k] === array[l]) {
+        leastCounter++;
+      } if (leastCounter < leastAmount) {
+        leastAmount = leastCounter;
+        leastFrequentItem = array[l];
+      }
+    }
+    leastCounter = 0;
+  }
 const frequencyObj = {};
   frequencyObj['most'] = mostFrequentItem;
   frequencyObj['least'] = leastFrequentItem;
